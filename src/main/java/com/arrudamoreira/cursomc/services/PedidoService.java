@@ -22,7 +22,7 @@ public class PedidoService {
 //	}
 
 	// Atualização do método para Spring 2.x.x com Java 11
-	public Pedido buscar(Integer id) {
+	public Pedido find(Integer id) {
 		Optional<Pedido> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class.getName()));
