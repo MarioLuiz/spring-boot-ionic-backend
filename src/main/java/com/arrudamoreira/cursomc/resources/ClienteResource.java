@@ -21,6 +21,7 @@ import com.arrudamoreira.cursomc.domain.Cliente;
 import com.arrudamoreira.cursomc.dto.ClienteDTO;
 import com.arrudamoreira.cursomc.dto.ClienteNewDTO;
 import com.arrudamoreira.cursomc.services.ClienteService;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 @RestController
 @RequestMapping(value="/clientes")
@@ -52,12 +53,14 @@ public class ClienteResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+        @PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
+        @PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<ClienteDTO>> findAll() {
 		List<Cliente> list = service.findAll();
