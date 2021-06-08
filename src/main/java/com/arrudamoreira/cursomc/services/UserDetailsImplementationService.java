@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.arrudamoreira.cursomc.domain.Cliente;
 import com.arrudamoreira.cursomc.repositories.ClienteRepository;
-import com.arrudamoreira.cursomc.security.UserSpringSecurity;
+import com.arrudamoreira.cursomc.security.UserSS;
 
 @Service
 public class UserDetailsImplementationService implements UserDetailsService{
@@ -24,7 +24,7 @@ public class UserDetailsImplementationService implements UserDetailsService{
 		if (cli == null) {
 			throw new UsernameNotFoundException(email);
 		}
-		return new UserSpringSecurity(cli.getId(),cli.getEmail(),cli.getSenha(),cli.getPerfis());
+		return new UserSS(cli.getId(),cli.getEmail(),cli.getSenha(),cli.getPerfis());
 	}
 
 }

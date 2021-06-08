@@ -13,7 +13,7 @@ import com.arrudamoreira.cursomc.domain.enums.Perfil;
  *
  * @author Mario Luiz
  */
-public class UserSpringSecurity implements UserDetails{
+public class UserSS implements UserDetails{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
@@ -21,14 +21,14 @@ public class UserSpringSecurity implements UserDetails{
 	private String senha;
 	private Collection<? extends GrantedAuthority> authorities;
 	
-	public UserSpringSecurity() {
+	public UserSS() {
 	}
 	
 	public Integer getId() {
 		return id;
 	}
 	
-	public UserSpringSecurity(Integer id, String email, String senha,
+	public UserSS(Integer id, String email, String senha,
 			Set<Perfil> perfis) {
 		super();
 		this.id = id;

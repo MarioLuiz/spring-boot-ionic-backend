@@ -21,7 +21,7 @@ import com.arrudamoreira.cursomc.dto.ClienteDTO;
 import com.arrudamoreira.cursomc.dto.ClienteNewDTO;
 import com.arrudamoreira.cursomc.repositories.ClienteRepository;
 import com.arrudamoreira.cursomc.repositories.EnderecoRepository;
-import com.arrudamoreira.cursomc.security.UserSpringSecurity;
+import com.arrudamoreira.cursomc.security.UserSS;
 import com.arrudamoreira.cursomc.services.exceptions.AuthorizationException;
 import com.arrudamoreira.cursomc.services.exceptions.DataIntegrityException;
 import com.arrudamoreira.cursomc.services.exceptions.ObjectNotFoundException;
@@ -45,7 +45,7 @@ public class ClienteService {
 //	}
     // Atualização do método para Spring 2.x.x com Java 11
     public Cliente find(Integer id) {
-        UserSpringSecurity user = UserService.authenticated();
+        UserSS user = UserService.authenticated();
         
         if(user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())){
             throw new AuthorizationException("Acesso Negado");
